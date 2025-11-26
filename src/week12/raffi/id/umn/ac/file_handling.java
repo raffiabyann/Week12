@@ -1,22 +1,16 @@
 package week12.raffi.id.umn.ac;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.File;
 
 public class file_handling {
 
     public static void main(String[] args) {
-
-        try {
-            FileWriter Writer = new FileWriter("myfile.txt");
-            Writer.write("Nama saya John Doe\n");
-            Writer.write("Saya dari Universitas Multimedia Nusantara");
-            Writer.close();
-            System.out.println("Successfully written.");
-        } catch (IOException e) {
-            System.out.println("An error has occurred.");
-            e.printStackTrace();
+        File Obj = new File("myfile.txt");
+        if (Obj.delete()) {
+            System.out.println("The deleted file is : " + Obj.getName());
+        } else {
+            System.out.println("Failed in deleting the file.");
         }
-
     }
 }
+
 
