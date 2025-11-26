@@ -1,21 +1,25 @@
 package week12.raffi.id.umn.ac;
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class file_handling {
-	 public static void main(String[] args) {
 
-	        try {
-	            File Obj = new File("myfile.txt");
-	            if (Obj.createNewFile()) {
-	                System.out.println("File created: " + Obj.getName());
-	            } else {
-	                System.out.println("File already exists.");
-	            }
-	        } catch (IOException e) {
-	            System.out.println("An error has occurred.");
-	            e.printStackTrace();
-	        }
+    public static void main(String[] args) {
 
-	    }
+        try {
+            File Obj = new File("myfile.txt");
+            Scanner Reader = new Scanner(Obj);
+            while (Reader.hasNextLine()) {
+                String data = Reader.nextLine();
+                System.out.println(data);
+            }
+            Reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error has occurred.");
+            e.printStackTrace();
+        }
+
+    }
 }
+
